@@ -1,0 +1,15 @@
+GROUP;PARTICIPANT_NUMBER;PARAM_ORDER_FOUND;LACK_PERS_FOUND;FLAW_LOGIC_FOUND;TOTAL_DEFECTS_FOUND
+novice;	1;	0;	0;	1;1
+novice;	12;	0;	0;	0;0
+novice;	14;	0;	0;	0;0
+novice;	4;	1;	0;	0;1
+novice;	5;	0;	0;	0;0
+novice;	6;	0;	0;	1;1
+novice;	9;	0;	1;	1;2
+expert;	11;	1;	1;	1;3
+expert;	13;	0;	1;	1;2
+expert;	2;	0;	1;	1;2
+expert;	3;	0;	0;	1;1
+expert;	7;	0;	0;	1;1
+expert;	8;	1;	1;	1;3
+novice; 10; 0;  0;  0;0

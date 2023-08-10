@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JupyterPersistentConnectionParameters">
+    <option name="knownRemoteServers">
+      <list>
+        <JupyterConnectionParameters>
+          <option name="authType" value="notebook" />
+          <option name="token" value="bf6d3804533965205dd89e64c0c7ce4b3438d6aca0518a96" />
+          <option name="urlString" value="http://localhost:8888/tree" />
+          <authParams2>
+            <map>
+              <entry key="token" value="bf6d3804533965205dd89e64c0c7ce4b3438d6aca0518a96" />
+            </map>
+          </authParams2>
+        </JupyterConnectionParameters>
+      </list>
+    </option>
+    <option name="moduleParameters">
+      <map>
+        <entry key="$PROJECT_DIR$/.idea/pycharm_project.iml">
+          <value>
+            <JupyterConnectionParameters>
+              <option name="authType" value="notebook" />
+              <option name="token" value="bf6d3804533965205dd89e64c0c7ce4b3438d6aca0518a96" />
+              <option name="urlString" value="http://localhost:8888/tree" />
+              <authParams2>
+                <map>
+                  <entry key="token" value="bf6d3804533965205dd89e64c0c7ce4b3438d6aca0518a96" />
+                </map>
+              </authParams2>
+            </JupyterConnectionParameters>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+﻿participant_number;confidence;security;maintainability;design;functional;developing software professional;programming java;code review;design code;write code;code review;employment;job_desc;education;gender;group
+1;3;occasionally;mostly;mostly;always;1-2 years;3-5 years;1-2 years;never;once per month;once per month;full-time;data analyst / scientist;PhD CS;f;novice
+2;7;mostly;always;mostly;always;> 10 years;> 10 years;6-10 years;once per week;once per week;once per week;full-time;Software Developer / DevOps Eng.;BSc CS;m;expert
+3;8;occasionally;mostly;mostly;always;6-10 years;> 10 years;6-10 years;once per week;daily;once per month;student / part-time;Student / Software Developer / Data Analyst / -Scientist;MSc STEM;f;expert
+4;8;occasionally;always;mostly;always;3-5 years;1-2 years;<1 year;once per week;daily;once per month;student / part-time;Student / Software Developer;BSc CS;m;novice
+5;4;always;occasionally;rarely;mostly;3-5 years;<1 year;1-2 years;once per week;daily;once per week;student / part-time;Software Developer;Apprenticeship IT;m;novice
+6;3;rarely;mostly;never;mostly;none;1-2 years;<1 year;never;once per week;once per month;Student;Student;BSc CS;f;novice
+7;5;rarely;always;always;occasionally;6-10 years;<1 year;6-10 years;daily;daily;daily;Part-time;Software Developer / IT Management;Bsc non CS;m;expert
+8;10;occasionally;mostly;always;always;> 10 years;> 10 years;6-10 years;once per week;once per week;daily;full-time;Software Architect;Msc CS;m;expert
+9;5;n/a;occasionally;mostly;always;<1 year;1-2 years;1-2 years;never;never;never;Student;Student;BSc CS;f;novice
+11;7;always;always;always;mostly;3-5 years;1-2 years;1-2 years;once per week;daily;daily;full-time;Software Developer;BSc CS;m;expert
+12;7;rarely;mostly;rarely;always;<1 year;1-2 years;1-2 years;once per month;once per week;once per month;student / part-time;Student;MSc STEM;m;novice
+13;10;always;always;always;always;6-10 years;1-2 years;> 10 years;daily;daily;once per week;Part-time;Software Developer;BSc CS;m;expert
+14;8;mostly;mostly;rarely;always;3-5 years;3-5 years;<1 year;once per month;daily;once per month;full-time;Software Developer;Apprenticeship IT;m;novice
