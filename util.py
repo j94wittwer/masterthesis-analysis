@@ -42,7 +42,7 @@ all_participants = {
     },
     11: {
         'group': 'expert',
-        'defects_found': 2
+        'defects_found': 3
     },
     12: {
         'group': 'novice',

@@ -1,10 +1,13 @@
 import pandas as pd
 from textdistance import levenshtein
 
+from scipy.stats import kruskal
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 import util
+
 
 def process_array(arr):
     arr = remove_zeros(arr)
@@ -285,21 +288,26 @@ participants_group = {
     14: 'novice'
 }
 
-participants_df = pd.DataFrame(columns=["participant", "similarity", "group"])
-
+participants_df = pd.DataFrame(columns=["participant", "similarity", "group", "defects_found"])
 
 for i in all_participants.keys():
     similarity = levenshtein.normalized_similarity(optimal_run, all_participants.get(i))
-    #print(f"Run {i}, Similarity: {similarity}, Group: {participants_group.get(i)}")
+    # print(f"Run {i}, Similarity: {similarity}, Group: {participants_group.get(i)}")
     if i == 8:
         similarity += .16
     if i == 9:
         similarity -= .05
-    new_row = {"participant": i, "similarity": similarity, "group": participants_group.get(i)}
+    new_row = {"participant": i, "similarity": similarity, "group": participants_group.get(i),
+               "defects_found": util.all_participants.get(i).get('defects_found')}
     participants_df.loc[len(participants_df)] = new_row
 
 novice_data = participants_df[participants_df['group'] == 'novice']['similarity']
 expert_data = participants_df[participants_df['group'] == 'expert']['similarity']
+
+no_defect_df = participants_df[participants_df['defects_found'] == 0]['similarity']
+one_defect_df = participants_df[participants_df['defects_found'] == 1]['similarity']
+two_defect_df = participants_df[participants_df['defects_found'] == 2]['similarity']
+three_defect_df = participants_df[participants_df['defects_found'] == 3]['similarity']
 
 print(participants_df)
 
@@ -310,10 +318,45 @@ print(f"Experts std: {expert_data.std()}")
 print(f"Novices mean: {novice_data.mean()}")
 print(f"Novices std: {novice_data.std()}")
 
-sns.set_palette("coolwarm", desat=1)
-plt.figure(figsize=(8,6))
-sns.boxplot(x='group', y='similarity', data=participants_df)
-plt.title("Distribution of Similarity Scores to Optimal Scan Path")
-plt.ylabel('Similarity Score')
-plt.xlabel('Group')
-plt.show()
+# sns.set_palette("coolwarm", desat=1)
+# plt.figure(figsize=(8,6))
+# sns.boxplot(x='group', y='similarity', data=participants_df)
+# plt.title("Distribution of Similarity Scores to Optimal Scan Path")
+# plt.ylabel('Similarity Score')
+# plt.xlabel('Group')
+# plt.show()
+
+# Calculate mean and std for each dataframe
+means = [no_defect_df.mean(),
+         one_defect_df.mean(),
+         two_defect_df.mean(),
+         three_defect_df.mean()]
+
+stds = [no_defect_df.std(),
+        one_defect_df.std(),
+        two_defect_df.std(),
+        three_defect_df.std()]
+
+# Create a new dataframe
+summary_df = pd.DataFrame({'mean': means, 'std': stds},
+                          index=['No Defect', 'One Defect', 'Two Defects', 'Three Defects'])
+
+print(summary_df)
+
+groups = [no_defect_df,
+          one_defect_df,
+          two_defect_df,
+          three_defect_df]
+
+statistic, p_value = kruskal(*groups)
+
+# Print the results
+print("Kruskal-Wallis statistic:", statistic)
+print("p-value:", p_value)
+
+# Interpret the results
+alpha = 0.05
+if p_value < alpha:
+    print("Reject the null hypothesis: There are significant differences between groups.")
+else:
+    print("Fail to reject the null hypothesis: No significant differences between groups.")
