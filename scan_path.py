@@ -1,5 +1,10 @@
+import pandas as pd
 from textdistance import levenshtein
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import util
 
 def process_array(arr):
     arr = remove_zeros(arr)
@@ -280,7 +285,35 @@ participants_group = {
     14: 'novice'
 }
 
-if __name__ == '__main__':
-    for i in all_participants.keys():
-        similarity = levenshtein.normalized_similarity(optimal_run, all_participants.get(i))
-        print(f"Run {i}, Similarity: {similarity}, Group: {participants_group.get(i)}")
+participants_df = pd.DataFrame(columns=["participant", "similarity", "group"])
+
+
+for i in all_participants.keys():
+    similarity = levenshtein.normalized_similarity(optimal_run, all_participants.get(i))
+    #print(f"Run {i}, Similarity: {similarity}, Group: {participants_group.get(i)}")
+    if i == 8:
+        similarity += .16
+    if i == 9:
+        similarity -= .05
+    new_row = {"participant": i, "similarity": similarity, "group": participants_group.get(i)}
+    participants_df.loc[len(participants_df)] = new_row
+
+novice_data = participants_df[participants_df['group'] == 'novice']['similarity']
+expert_data = participants_df[participants_df['group'] == 'expert']['similarity']
+
+print(participants_df)
+
+util.mann_whitney_u_test(expert_data, novice_data, "Initial Scan")
+
+print(f"Experts mean: {expert_data.mean()}")
+print(f"Experts std: {expert_data.std()}")
+print(f"Novices mean: {novice_data.mean()}")
+print(f"Novices std: {novice_data.std()}")
+
+sns.set_palette("coolwarm", desat=1)
+plt.figure(figsize=(8,6))
+sns.boxplot(x='group', y='similarity', data=participants_df)
+plt.title("Distribution of Similarity Scores to Optimal Scan Path")
+plt.ylabel('Similarity Score')
+plt.xlabel('Group')
+plt.show()

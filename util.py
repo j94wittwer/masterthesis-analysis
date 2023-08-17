@@ -3,6 +3,61 @@ from scipy.stats import shapiro, mannwhitneyu
 from tabulate import tabulate
 from pingouin import mwu
 
+all_participants = {
+    1: {
+        'group': 'novice',
+        'defects_found': 1
+    },
+    2: {
+        'group': 'expert',
+        'defects_found': 2
+    },
+    3: {
+        'group': 'expert',
+        'defects_found': 1
+    },
+    4: {
+        'group': 'novice',
+        'defects_found': 1
+    },
+    5: {
+        'group': 'novice',
+        'defects_found': 0
+    },
+    6: {
+        'group': 'novice',
+        'defects_found': 1
+    },
+    7: {
+        'group': 'expert',
+        'defects_found': 1
+    },
+    8: {
+        'group': 'expert',
+        'defects_found': 3
+    },
+    9: {
+        'group': 'novice',
+        'defects_found': 2
+    },
+    11: {
+        'group': 'expert',
+        'defects_found': 2
+    },
+    12: {
+        'group': 'novice',
+        'defects_found': 0
+    },
+    13: {
+        'group': 'expert',
+        'defects_found': 2
+    },
+    14: {
+        'group': 'novice',
+        'defects_found': 0
+    },
+}
+
 
 def test_normal_distribution(data, alpha=0.05):
     statistic, p_value = shapiro(data)
