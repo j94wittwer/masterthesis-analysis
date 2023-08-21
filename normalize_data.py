@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Replace 'your_data.csv' with your actual data file
-df = pd.read_csv('data/all_participants_raw.csv', delimiter=";")
+df = pd.read_csv('data/all_participants.csv', delimiter=";")
 
 # Step 1: Remove the 'IA_DWELL_TIME_NORM' column if it exists
 if 'IA_DWELL_TIME_NORM' in df.columns:
